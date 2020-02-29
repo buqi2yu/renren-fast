@@ -4,7 +4,7 @@ server:
     uri-encoding: UTF-8
     max-threads: 1000
     min-spare-threads: 30
-  port: 8080
+  port: 8080 #tomcat端口号
   connection-timeout: 5000ms
   servlet:
     context-path: /renren-fast
@@ -74,3 +74,21 @@ renren:
     # token有效时长，7天，单位秒
     expire: 604800
     header: token
+    # 数据库配置
+    spring:
+      datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        druid:
+          first:  #数据源1
+            url: jdbc:mysql://localhost:3306/renren_fast?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+            username: root
+            password: 7777777
+          second:  #数据源2
+            url: jdbc:mysql://localhost:3306/bdshop?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+            username: root
+            password: 7777777
+          initial-size: 10
+          max-active: 100
+          min-idle: 10
+          max-wait: 60000
